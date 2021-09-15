@@ -1,9 +1,7 @@
 <section class="cart-show">
-
   <header class="page-header">
     <h1>My Cart</h1>
   </header>
-
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -25,13 +23,12 @@
             TOTAL:
           </th>
           <th>
-            <%= cart_subtotal_cents / 100.0 %>
+            <%= humanized_money_with_symbol cart_subtotal_cents / 100.0 %>
           </th>
         </tr>
       </tfoot>
     </table>
   </div>
-
   <div class="row">
     <div class="col-xs-12">
       <%= form_tag orders_path do %>
@@ -43,10 +40,8 @@
           data-description="Khurram Virani's Jungle Order"
           data-locale="auto"
           data-email="kvirani@gmail.com"
-          data-currency="cad">
-        </script>
+          data-currency="cad"></script>
       <% end %>
     </div>
   </div>
-
 </section>
