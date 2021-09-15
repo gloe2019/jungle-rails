@@ -7,6 +7,7 @@
   </header>
   <p class="description">
     <%= product.description %>
+    <%# <%= debug product%> %>
   </p>
   <footer class="actions">
     <%= button_to add_item_cart_path(product_id: product.id), class: 'btn btn-primary' , method: :post do %>
@@ -16,8 +17,12 @@
       Details &raquo;
     <% end %>
   </footer>
-
   <aside class="price">
     <%= humanized_money_with_symbol product.price %>
   </aside>
-</article>
+  <% if product.quantity == 0%>
+    <aside class="sold-out">
+      <span>SOLD OUT</span>
+      <aside>
+      <% end %>
+    </article>
