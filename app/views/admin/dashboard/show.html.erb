@@ -5,8 +5,9 @@
   <div class="panel-body">
     <div>
       <h4>Number of Products: <%= @product_count %>
-        <button><%= link_to 'View Products' ,  '/admin/products' %></button></h4>
+        <button><%= link_to 'View Products' ,  [:admin, :products] %></button></h4>
     </div>
-    <h4>Number of Categories: <%= @category_count %></h4>
+    <h4>Number of Categories: <%= @category_count %>
+      <button><%= link_to 'View Categories' ,  [:admin, :categories] %></button></h4>
   </div>
 </div>
