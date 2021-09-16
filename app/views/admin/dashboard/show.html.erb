@@ -1,2 +1,12 @@
-<h1>Admin::Dashboard#show</h1>
-<p>Find me in app/views/admin/dashboard/show.html.erb</p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h1 class="panel-title">Admin Dashboard</h2>
+  </div>
+  <div class="panel-body">
+    <div>
+      <h4>Number of Products: <%= @product_count %>
+        <button><%= link_to 'View Products' ,  '/admin/products' %></button></h4>
+    </div>
+    <h4>Number of Categories: <%= @category_count %></h4>
+  </div>
+</div>

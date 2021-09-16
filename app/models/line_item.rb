@@ -7,3 +7,4 @@ class LineItem < ActiveRecord::Base
   monetize :total_price_cents, numericality: true
 
 end
+
