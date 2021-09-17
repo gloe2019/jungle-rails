@@ -4,7 +4,17 @@
   </header>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-1">
-      <%= form_for :user, url: '/users' do |form| %>
+      <%= form_for @user, url: users_path do |form| %>
+        <% if @user.errors.any? %>
+          <div class="alert alert-danger">
+            <strong>The following errors prevented saving:</strong>
+            <ul>
+              <% @user.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
         <div class="form-group">
           <%= form.label :first_name %>
           <%= form.text_field :first_name, class: 'form-control' %>
