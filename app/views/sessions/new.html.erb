@@ -3,8 +3,11 @@
     <h1>&raquo; Login</h1>
   </header>
   <div class="row">
+    <% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, class: "col-sm-6 col-sm-offset-1 alert alert-#{name}" %>
+    <% end %>
     <div class="col-sm-6 col-sm-offset-1">
-      <%= form_for login_path do |form| %>
+      <%= form_for :session, url: login_path do |form| %>
         <div class="form-group">
           <%= form.label :email %>
           <%= form.email_field :email, class: 'form-control' %>
