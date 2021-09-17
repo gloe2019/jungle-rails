@@ -12,6 +12,12 @@
     <%= sale.percent_off%>
   </td>
   <td>
-    Hello
+    <% if sale.finished? %>
+      <span class="label label-danger">Finished</span>
+    <% elsif sale.upcoming? %>
+      <span class="label label-warning">Upcoming</span>
+    <% else %>
+      <span class="label label-success">Active</span>
+    <% end %>
   </td>
 </tr>
