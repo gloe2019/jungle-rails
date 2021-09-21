@@ -27,7 +27,8 @@ RSpec.describe Product, type: :model do
         quantity: 25,
       }
       @product = @category.products.create(details)
-      expect(@product.errors.full_messages.length()).not_to eq(0)
+      expect(@product.errors.full_messages.length()).to eq(1) 
+      expect(@product.errors.full_messages).to include("Name can't be blank")
     end
 
     it "should not create a product without a price" do
@@ -38,9 +39,10 @@ RSpec.describe Product, type: :model do
         quantity: 25,
       }
       @product = @category.products.create(details)
-      expect(@product.errors.full_messages.length()).not_to eq(0)
+      expect(@product.errors.full_messages).to include("Price can't be blank")
+      expect(@product.errors.full_messages).to include("Price is not a number")
     end
-
+    
     it "should not create a product without a quantity" do
       details = {
         name: 'Treehouse Tent',
@@ -49,18 +51,21 @@ RSpec.describe Product, type: :model do
         quantity: nil,
       }
       @product = @category.products.create(details)
-      expect(@product.errors.full_messages.length()).not_to eq(0)
+      expect(@product.errors.full_messages.length()).to eq(1) 
+      expect(@product.errors.full_messages).to include("Quantity can't be blank")
     end
     
     it "should not create a product without a category" do
       details = {
-        name: 'Treehouse Tent',
-        description: Faker::Hipster.paragraph(4),
-        price: 150.59,
-        quantity: 25,
-      }
-      @product = Product.new(details)
-      expect(@product).not_to be_valid
+          name: 'Treehouse Tent',
+          description: Faker::Hipster.paragraph(4),
+          price: 150.59,
+          quantity: 25,
+          category: nil
+        }
+        @product = Product.new(details)
+        puts @product.inspect
+        expect(@product).not_to be_valid
+      end
     end
-  end
 end
