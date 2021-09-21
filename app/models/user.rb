@@ -4,4 +4,9 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
   validates :email, presence: true, uniqueness: {case_sensitive: false}
   validates :password, length: { in: 5..10 }
+
+  def self.authenticate_with_credentials(email, password)
+    
+
+  end
 end
